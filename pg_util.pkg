@@ -1,0 +1,55 @@
+CREATE or replace PACKAGE PG_UTIL IS
+
+TYPE t_varchar20_table IS TABLE OF VARCHAR2(32767);
+gv_decimal_format CONSTANT VARCHAR2(60) := '999999999999999.99999999999999999999999999999999999999999';
+
+FUNCTION f_get_nth_occurrence (
+	av_list VARCHAR2,
+	av_delimiter VARCHAR2,
+	av_occurrence integer
+  )
+RETURN VARCHAR2;
+
+FUNCTION f_delimited_to_table (
+	av_list VARCHAR2,
+	av_delimiter VARCHAR2
+  )
+RETURN t_varchar20_table PIPELINED;
+
+FUNCTION f_to_decimal (
+	av_value VARCHAR2
+  )
+RETURN NUMBER;
+
+FUNCTION f_eliminate_dupes_and_sort (
+	av_list VARCHAR2,
+	av_delimiter varchar2
+  )
+return varchar2;
+
+FUNCTION f_sort (
+	av_list VARCHAR2,
+	av_delimiter varchar2
+  )
+return varchar2;
+
+FUNCTION f_sort_numeric (
+	av_list VARCHAR2,
+	av_delimiter varchar2
+  )
+return varchar2;
+
+FUNCTION f_eliminate_ones_with (
+	av_list VARCHAR2,
+	av_delimiter varchar2,
+	av_eliminate varchar2
+  )
+return varchar2;
+
+Function replace_non_nums_and_chars(av_value VARCHAR2) return varchar2;
+Function get_LOV(sourcestr VARCHAR2,toget VARCHAR2) return varchar2;
+FUNCTION f_get_number_string(av_value VARCHAR2) return varchar2;
+function isNumber(p in varchar2) return varchar2;
+
+END;
+/
