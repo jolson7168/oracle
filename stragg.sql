@@ -36,11 +36,8 @@ is
   return number
   is
   begin
-
     sctx := stragg_type( null ) ;
-
     return ODCIConst.Success ;
-
   end;
 
   member function ODCIAggregateIterate
@@ -49,11 +46,8 @@ is
   ) return number
   is
   begin
-
     self.string := substr(self.string || ',' || value,1,1500) ;
-
     return ODCIConst.Success;
-
   end;
 
   member function ODCIAggregateTerminate
@@ -63,11 +57,8 @@ is
   ) return number
   is
   begin
-
     returnValue := substr(ltrim( self.string, ',' ),1,1500);
-
     return ODCIConst.Success;
-
   end;
 
   member function ODCIAggregateMerge
@@ -76,13 +67,9 @@ is
   ) return number
   is
   begin
-
     self.string := substr(self.string || ctx2.string,1,1500);
-
     return ODCIConst.Success;
-
   end;
-
 end;
 /
 
